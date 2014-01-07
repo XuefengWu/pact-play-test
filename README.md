@@ -1,7 +1,7 @@
 pact play test
 ==============
 
-play framework integrate test by PACT defined json file
+play framework integrate test by [PACT](https://github.com/bethesque/pact) defined json file
 
 It generate test case from a PACT defined json files for integration test.
 
