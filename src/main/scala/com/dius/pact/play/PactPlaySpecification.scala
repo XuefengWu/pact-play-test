@@ -12,6 +12,7 @@ import com.dius.pact.model.Pact
 import com.dius.pact.model.Request
 import play.api.test.WithServer
 import play.api.Play.current
+import play.api.libs.json.Json
 
 trait PactPlaySpecification extends Specification {
 
@@ -45,6 +46,9 @@ trait PactPlaySpecification extends Specification {
           Await.result(chooseRequest(request.path,request.body.getOrElse(""),request.method.toString()), Duration(3, SECONDS))
         }
         result.status === i.response.status
+
+        i.response.body.map(b => Json.parse(result.body) === Json.parse(b)).getOrElse(1 === 1)
+
       }
     }
   }
